@@ -1,6 +1,6 @@
 # Jupyter Notebook 사용하기
 
-
+## Setting
 
 https://github.com/sspy1/python_basic.git
 
@@ -51,4 +51,12 @@ $ jupyter notebook
         http://localhost:8888/?token=5244c4a9e223439cc9080160064088ed2ac7998977ce5c17
 
 ```
+
+
+
+## 사용하기
+
+console 입력내용 실행 : **shift + enter**
+
+상단의 insert에서 insert cell을 클릭하여 python을 입력 후 실행해 볼 수 있다.
 
