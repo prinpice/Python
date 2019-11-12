@@ -976,3 +976,634 @@ out :
     29 30 31 
 ```
 
+
+
+**아래의 사각형 코드를 rectangle() 함수로 만들어보세요.**
+
+```python
+height = 30
+    width = 20
+    # 아래에 코드를 작성하세요.
+    round_re = 2 * (height + width)
+    s = height * width
+    print(f'직사각형 둘레: {round_re}, 면적: {s}입니다.')
+```
+
+```python
+def rectangle(height, width):
+    round_re = 2*(height + width)
+    s = height * width
+    print(f'직사각형 둘레: {round_re}, 면적: {s}입니다.')
+    return
+
+in : 
+    # 너비 30, 높이 100일때 호출 해보세요
+    height = 30
+    width = 100
+    rectangle(30, 100)
+out : 
+    직사각형 둘레: 260, 면적: 3000입니다.
+```
+
+
+
+**아래의 코드와 동일한 my_max함수를 만들어주세요. 정수를 두 개 받아서, 큰 값을 반환합니다.**
+
+```python
+max(1, 5)
+```
+
+```python
+def my_max(a, b):
+    if(a >= b):
+        return a
+    else:
+        return b
+    
+in : 
+    # 만든 함수를 호출해보세요.
+	print(my_max(1, 5))
+out : 
+    5
+```
+
+**함수는 모든 객체를 리턴할 수 있습니다. 리스트 두개를 받아 각각 더한 결과를 비교하여 값이 큰 리스트를 반환합니다.**
+
+```python
+my_list_max([10, 3], [5, 9])
+예상 출력)
+[5, 9]
+```
+
+```python
+def my_list_max(lst1, lst2):
+    sum1 = 0
+    sum2 = 0
+    for i in lst1:
+        sum1 += i
+    for i in lst2:
+        sum2 += i
+    if sum1 >= sum2:
+        return lst1
+    else:
+        return lst2
+
+def my_list_max(lst1, lst2):
+    if sum(lst1) >= sum(lst2):
+        return lst1
+    else:
+        return lst2
+    
+in : 
+    # 만든 함수를 호출해보세요.
+	my_list_max([10, 3], [5, 9])
+out :
+    [5, 9]
+```
+
+
+
+**정수를 여러 개 받아서 가장 큰 값을 반환(return)하는 my_max()을 만들어주세요**
+
+```python
+my_max(10, 20, 30, 50)
+예시 출력)
+50
+max(1, 2, 3, 4)
+```
+
+```python
+def my_max(*args):
+    return max(args)
+
+in : 
+    # 만든 함수를 호출해보세요.
+	my_max(1, 2, 3, 4)
+out : 
+    4
+    
+in : 
+    # 아래에 코드를 작성해주세요.
+    def my_max(*args):
+        result = 0
+        for idx, val in enumerate(args):
+            if idx == 0:
+                result = val
+            else:
+                if val > result:
+                    result = val
+        return result
+    my_max(1, 2, 9, 3, 4, 5)    
+out : 
+    9
+```
+
+
+
+**my_dict()함수를 만들어 실제로 dictionary 모습으로 출력함수를 만들어보세요**
+
+````
+예시 출력)
+한국어 : 안녕, 영어 : hi
+```
+
+```python
+def my_fake_dict(**kwargs):
+    result = []
+    for key, value in kwargs.items():
+        result.append(f'{key}, {value}')
+    print(', '.join(result))
+    
+in : 
+    # 만든 함수를 호출해보세요.
+	my_fake_dict(한국어='안녕', 영어='hi', 독일어='Guten Tag')
+out : 
+    한국어, 안녕, 영어, hi, 독일어, Guten Tag
+    
+# 사실은 dict()는 출력이 아니라 딕셔너리를 리턴합니다. 
+# 리턴하는 my_fake_dict를 만들어주세요.        
+def my_fake_dict(**kwargs):
+    result = []
+    for key, value in kwargs.items():
+        result.append(f'{key}, {value}')
+    return result
+
+in : 
+    # 만든 함수를 호출해보세요.
+	my_fake_dict(한국어='안녕', 영어='hi', 독일어='Guten Tag')
+out : 
+    ['한국어, 안녕', '영어, hi', '독일어, Guten Tag']
+```
+
+
+
+**2016년 1월 1일은 금요일입니다. 2016년 a월 b일은 무슨 요일일까요? 두 수 a,b를 입력받아 2016년 a월 b일이 무슨 요일인지 리턴하는 함수, solution을 완성하세요. 요일의 이름은 일요일부터 토요일까지 각각 SUN,MON,TUE,WEB,THU,FRI,SAT입니다.**
+
+**예를 들어, a = 5, b = 24라면 5월 24일은 화요일이므로 문자열 "TUE"를 반환하세요**
+
+```python
+in : 
+    #여기에 코드를 작성하세요
+    def week(a, b):
+        m = 1
+        d = 1
+        weekd = 'FRI'
+        week_lst = ['SUN', 'MON', 'TUE','WEB','THU','FRI','SAT']
+        tot = -1
+        for i in range(m, a):
+            if i == 2:
+                tot += 29
+            elif i in (4, 6, 9, 11):
+                tot += 30
+            else:
+                tot += 31
+        tot += b
+        tot %= 7
+        index = week_lst.index('FRI')
+        index += tot
+        if index >6:
+            index -= 7
+        weekday = week_lst[index]
+        return weekday
+    week(5, 24)
+out : 
+	'TUE'    
+```
+
+```python
+in : 
+    def solution(a, b):
+        answer = ['FRI','SAT', 'SUN', 'MON', 'TUE','WEB','THU']
+        month = [30, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] # 월별 날짜수
+
+        if a > 1:
+            for i in range(0, a-1):
+                b = b + month[i]
+        return answer[b % 7 -1]
+
+	solution(1, 2)
+out : 
+'SAT'    
+```
+
+
+
+**어떤 문장의 각 알파벳을 일정한 거리만큼 밀어서 다른 알파벳으로 바꾸는 암호화 방식을 시저 암호라고 합니다. 예를 들어 AB는 1만큼 밀면 BC가 되고, 3만큼 밀면 DE가 됩니다. z는 1만큼 밀면 a가 됩니다. 문자열 s와 거리 n을 입력받아 s를 n만큼 민 암호문을 만드는 함수, solution을 완성해 보세요.**
+
+**제한 조건: 공백은 아무리 밀어도 공백. s는 알파벳 소문자, 대문자, 공백으로만 이루어져 있다. s의 길이는 8000이하이다. n은 1이상 25이하인 자연수이다.**
+
+```python
+in : 
+    # 여기에 코드를 작성하세요
+    def siz(str_in, num_in):
+        lst_si = []
+        for i in str_in:
+            if i != " ":
+                lst_si.append(chr((ord(i)+num_in)))
+        str_re = "".join(lst_si)
+        return str_re
+
+    siz('AB', 3)
+out : 
+    'DE'
+```
+
+```python
+in : 
+def solution(s, n):
+    s = list(s)
+    
+    for i in range(len(s)):
+        if s[i].isupper(): # 대문자인 경우
+            s[i] = chr((ord(s[i])-ord('A') + n) % 26 + ord('A')) # GRAPE
+        elif s[i].islower(): # 소문자인 경우
+            s[i] = chr((ord(s[i])-ord('a') + n) % 26 + ord('a'))
+    answer = "".join(s)
+    return answer
+out : 
+	65 66
+	C
+```
+
+
+
+**문자열 s는 한 개 이상의 단어로 구성되어 있습니다. 각 단어는 하나 이상의 공백 문자로 구분되어 있습니다. 각 단어의 짝수번째 알파벳은 대문자로, 홀수번째 알파벳은 소문자로 바꾼 문자열을 리턴하는 함수, solution을 완성하세요**
+
+**제한 사항: 문자열 전체의 짝/홀수 인덱스가 아니라, 단어(공백을 기준)별로 짝/홀수 인덱스를 판단해야 합니다.**
+
+```python
+in : 
+    # 여기에 코드를 작성하세요
+    def updown(s):
+        lst_s = s.split(" ")
+        str_re = ""
+        for i in lst_s:
+            for j in i:
+                if i.index(j) % 2 != 0:
+                    str_re += j.upper()
+                else:
+                    str_re += j.lower()
+            str_re += " "
+        return str_re
+
+    updown("Hi My Name Is")
+out : 
+	'hI mY nAmE iS '
+```
+
+```python
+in : 
+	def solution(s):
+        word_list = []
+
+        for word in s.split(" "):
+            for i in range(0, len(word)): # i = 0
+                word = word[:i] + (word[i].upper() if i % 2 == 0 else word[i].lower()) + word[i + 1]
+            word_list.append(word)
+        return " ".join(word_list)
+
+    print(solution('cOffe'))
+    print(solution('ricola candy'))
+out : 
+    ---------------------------------------------------------------------------
+    IndexError                                Traceback (most recent call last)
+    <ipython-input-44-e9289521b0dd> in <module>
+          8     return " ".join(word_list)
+          9 
+    ---> 10 print(solution('cOffe'))
+         11 print(solution('ricola candy'))
+
+    <ipython-input-44-e9289521b0dd> in solution(s)
+          4     for word in s.split(" "):
+          5         for i in range(0, len(word)): # i = 0
+    ----> 6             word = word[:i] + (word[i].upper() if i % 2 == 0 else word[i].lower()) + word[i + 1]
+          7         word_list.append(word)
+          8     return " ".join(word_list)
+
+    IndexError: string index out of range
+```
+
+
+
+**대학생 새내기들의 90%는 자신이 반에서 평균은 넘는다고 생각합니다, 첫째 줄에는 테스트 케이스의 개수 C가 주어지고, 둘째 줄부터 각 테스트 케이스마다 학생의 수 N(1 ≤ N ≤ 1000, N은 정수)이 첫 수로 주어지고, 이어서 N명의 점수가 주어집니다. 점수는 0보다 크거나 같고, 100보다 작거나 같은 정수입니다. 각 케이스마다 한 줄씩 평균을 넘는 학생들의 비율을 반올림하여 소수점 셋째 자리까지 출력하세요.**
+
+```python
+in : 
+    # 여기에 코드를 작성하세요
+    c = 2
+    ls_test_1 = [3, 30, 40, 50]
+    ls_test_2 = [2, 60, 80]
+    def test(ls_test):
+        ave = sum(ls_test[1:])/ls_test[0]
+        return ave
+    ave1 = test(ls_test_1)
+    ave2 = test(ls_test_2)
+    count1, count2 = 0, 0
+    for i in ls_test_1[1:]:
+        if i > ave1:
+            count1 += 1
+    for i in ls_test_2[1:]:
+        if i > ave2:
+            count2 += 1
+    print(ave1, round(count1/ls_test_1[0]*100, 3), "%")
+    print(ave2, round(count2/ls_test_2[0]*100, 3), "%")
+out : 
+	40.0 33.333 %
+	70.0 50.0 %
+```
+
+```python
+in : 
+    def ratio(t):
+        for i in range(t):
+            scores = list(map(int, input().split()))
+            n = scores[0]
+            scores = scores[1:]
+            avg = sum(scores)/n
+            cnt = len([s for s in scores if s > avg])
+            print(avg, "%.3f" % (100*cnt/n), end='%\n')
+
+    t = int(input("case"))
+
+    print(ratio(t))
+```
+
+
+
+**당신은 리스트의 요소중에서 처음으로 연속되지 않은 요소를 찾아야 합니다.예를 들어, [1, 2, 3, 4, 6, 7, 8] 이라는 리스트에서 1, 2, 3, 4는 모두 연속적이지만 6은 처음으로 연속되지 않은 요소입니다. 만약에 모든 리스트의 요소가 연속적이라면 null을 반환합니다. 배열에는 최소한 2개의 요소가 있어야 하고 모든 요소의 값은 숫자이며 중복은 없고 오름차순으로 정렬됩니다. 숫자는 음수 또는 양수 모두 가능합니다.**
+
+```python
+in : 
+    #여기에 코드를 작성하세요
+    def con(lst):
+        num = lst[0]
+        for i in lst:
+            if i == num:
+                num += 1
+            else:
+                num = i
+                break
+        return num
+
+    con([1, 2, 3, 4, 6, 7, 8])
+out : 
+    6
+```
+
+
+
+**색이 칠해진 삼각형은 각각 빨강, 녹색 또는 파랑 색의 행에서 만들어집니다. 마지막 행보다 하나 적은 색을 각각 포함하는 연속 행은 이전 행에서 두 개의 색을 고려하여 생성됩니다. 이 색상이 동일하면 동일한 색상이 새 행에 사용됩니다. 색상이 다른 경우 누락 된 색상이 새 행에 사용됩니다. 단 하나의 색상으로 최종 행이 생성 될 때까지 계속됩니다.**
+
+**삼각형의 첫 행을 문자열로 지정하고 마지막 행을 문자열로 표시하는 최종 색을 반환합니다. 위 예제의 경우 RRGBRGBB를 반환해야합니다. 입력 문자열에는 대문자 R, G, B 만 포함되며 적어도 하나의 문자가있어 유효하지 않은 입력을 테스트 할 필요가 없습니다. 한 색상 만 입력으로 받으면 해당 색상을 반환하십시오.**
+
+```
+출력 결과
+print(triangle('RRR')) => R
+print(triangle('RG')) => B
+print(triangle('RRRGGGBBBBBB')) => G
+print(triangle('RRGBRGBB')) => G
+```
+
+```python
+in : 
+    #여기에 코드를 작성하세요
+    def triangle(row):
+        dicts = {'GG':'G', 'BB':'B', 'RR':'R', 'BR':'G', 'BG':'R', 'GB':'R', 'GR':'B', 'RG':'B', 'RB':'G'}
+
+        if len(row)> 2:
+            s = ''
+            for i in range(len(row)-1):
+                s = s + dicts[row[i:i+2]]
+            row = s
+            return triangle(row)
+        elif len(row) > 1:
+            return dicts[row]
+        else:
+            return row
+    print(triangle('RRR'))
+out : 
+    R
+```
+
+```python
+in : 
+    def triangle(row):
+        if len(row) == 1:
+            return row[0]
+
+        colors = set(["B", "G", "R"])
+        newrow = []
+        for (l, r) in zip(row, row[1:]):
+            if l == r:
+                newrow.append(l)
+            else:
+                newrow.extend(colors - set([l, r]))
+
+        return triangle(newrow)
+
+    print(triangle('RRG'))
+out : 
+    G
+```
+
+
+
+**n개의 정수 리스트가 주어지면, 홀수와 짝수를 분리하고 각각의 조건에 맞게 홀수와 짝수를 정렬하세요.**
+
+```
+조건
+
+1. 짝수가 홀수보다 먼저오는 리스트를 반환합니다.
+2. 짝수는 오름차순으로 홀수는 내림차순으로 정렬합니다.
+3. 리스트의 크기는 적어도 4이상이어야 합니다.
+4. 리스트의 요소값으로 0은 존재하지 않습니다.
+5. 리스트의 요소값이 반복될 수 있으나 중복은 분리할 때 포함하지 않습니다.
+
+출력결과
+
+- even_and_odd[7, 3 , 14 , 17] --> return [14, 17, 7, 3] :14는 짝수이기 때문에 가장 먼저 나오고 홀수는 내림차순으로 정렬을 하기 때문에 17, 7, 3 의 순서로 반환됩니다.
+```
+
+```python
+in : 
+    # 여기에 코드를 작성하세요
+    def even_and_odd(lst):
+        even_lst = []
+        odd_lst = []
+        for i in lst:
+            if i % 2 == 0:
+                even_lst.append(i)
+            else:
+                odd_lst.append(i)
+        even_lst.sort()
+        odd_lst.reverse()
+        even_lst.extend(odd_lst)
+        return even_lst
+
+    print(even_and_odd([7, 3 , 14 , 17]))
+out : 
+    [14, 17, 3, 7]
+```
+
+```python
+in : 
+    def even_and_odd(arr):
+        even = []
+        odd = []
+        for i in sorted(set(arr)): # set 자료형은 중복을 허용하지 않음
+            if i % 2 == 0:
+                even.append(i)
+            else:
+                odd.append(i)
+        return even + odd[::-1]
+
+    print(even_and_odd([14, 17, 2, 7, 20, 3, 6, 13]))
+out : 
+    [2, 6, 14, 20, 17, 13, 7, 3]
+```
+
+
+
+**정수로 된 리스트를 매개 변수로 가져와 해당 리스트의 모든 숫자를 처리할 수 있는 함수를 작성하세요. 처리 조건은 다음과 같습니다.숫자에 정수 제곱근이 있는 경우 제곱근을 해주고 그렇지 않으면 숫자를 제곱합니다.입력 리스트는 수정할 수 없습니다.**
+
+```python
+in : 
+    #여기에 코드를 작성하세요
+    def rout(num_lst):
+        result_lst = []
+        for i in num_lst:
+            if (i**0.5) % 1 == 0:
+                result_lst.append(int(i**0.5))
+            else:
+                result_lst.append(i**2)
+        return result_lst
+
+    print(rout([1, 2, 3, 4, 9]))
+out : 
+    [1, 4, 9, 2, 3]
+```
+
+
+
+**원하는 행까지 아래의 패턴을 생성하는 함수를 작성하세요. 만약 인자가 0이나 음의 정수인 경우 "" 즉, 빈 문자열로 반환하세요.짝수가 인수로 전달되면 패턴은 통과된 짝수보다 작은 최대 홀수까지 계속되어야 합니다.**
+
+```python
+# 예시 
+# pattern(9):
+
+# 1
+# 333
+# 55555
+# 7777777
+# 999999999
+
+# pattern(6)
+# 1
+# 333
+# 55555
+
+# 유의
+# 패턴에 공백은 없습니다.
+```
+
+```python
+in : 
+    # 여기에 코드를 작성하세요
+    def pattern(num):
+        for i in range(1, num+1):
+            if i % 2 != 0:
+                print(f'{i}'*i)
+            else:
+                pass
+        return ""
+
+    print(pattern(9))
+out : 
+    1
+    333
+    55555
+    7777777
+    999999999
+```
+
+```python
+in : 
+    def pattern(n):
+        string = ""
+        a = n
+
+        if a % 2 == 0:
+            a -= 1
+        for x in range (1, a + 1):
+            if x % 2 != 0: # 홀수
+                string += str(x) * x
+
+                if x != a:
+                    string += "\n"
+        return string
+
+    print(pattern(9))
+out : 
+    1
+    333
+    55555
+    7777777
+    999999999
+```
+
+
+
+**(QWERTY 키보드를 사용하여 타이핑을 한다고 가정할 때) '편안한 단어'는 타이핑 할 때 손을 번갈아 칠 수 있는 단어를 말합니다.단어를 인자로 받아 그것이 '편안한 단어'인지 여부를 True/False로 반환하는 함수를 만드세요.(모든 단어는 a ~ z까지 오름차순으로 구성된 문자열입니다.)**
+
+```
+문자 목록
+
+- 왼손: q, w, e, r, t, a, s, s, d, f, g, z, x, c, v, b
+- 오른손: y, u, i, o, p, h, j, k, l, n, m
+```
+
+```python
+in : 
+    #여기에 코드를 작성하세요
+    def soft(s):
+        left_lst = ['q', 'w', 'e', 'r', 't', 'a', 's', 's', 'd', 'f', 'g', 'z', 'x', 'c', 'v', 'b']
+        right_lst = ['y', 'u', 'i', 'o', 'p', 'h', 'j', 'k', 'l', 'n', 'm']
+
+        for i in range(len(s)):
+            if s[0] in left_lst:
+                if (i % 2 == 0 and s[i] in left_lst) or (i % 2 != 0 and s[i] in right_lst):
+                    pass
+                else:
+                    return False
+            elif s[0] in right_lst:
+                if (i % 2 == 0 and s[i] in right_lst) or (i % 2 != 0 and s[i] in left_lst):
+                    pass
+                else:
+                    return False
+        return True
+    print(soft('amsld'))
+out : 
+    True
+```
+
+```python
+in : 
+    def confortable_word(word): # qywu
+        left, right = "qwertasdfgzxcvb", "yuiophjklnm"
+        l = True if word[0] in left else False # l true
+
+        for letter in word[1:]: # ywu
+            if letter in left and l:
+                return False
+            if letter in right and not l:
+                return False
+            l = not l # False
+        return True
+
+    print(confortable_word("qywu"))
+    print(confortable_word("apple"))
+out : 
+    True
+    False
+```
+
