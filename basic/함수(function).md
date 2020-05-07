@@ -46,6 +46,8 @@ out :
 
 ## 개요
 
+* 특별한 기능을 하는 프로그램의 한조각
+
 ```python
 def func(parameter1, parameter2):
     code line1
@@ -57,6 +59,7 @@ def func(parameter1, parameter2):
   * `def`로 시작하여 `:`으로 끝남
   * `4spaces 들여쓰기`로 코드 블럭을 생성
 * 매개변수(parameter)를 넘겨줄 수 있음
+* 대소문자 구분함
 * 동작 후에 return을 통해 결과값 전달 가능(return 값 없으면, None을 반환함)
 * 호출
   * `func(val1, val2)`
@@ -347,5 +350,33 @@ def func(parameter1, parameter2):
   YouTubeVideo('yH_1vwnp3ZQ', width='100%')
   ```
 
-  
 
+## 함수의 종류
+
+### 내장함수
+
+* `print()`
+
+  * 소괄호 사이에 적은 내용을 모니터에 출력해주는 함수
+  * 옵션
+    * `end=""` : 엔터기능 제거
+
+  ```python
+  print("hello")
+  print("hi ", end="")
+  print("world")
+  
+  # hello
+  #hi world
+  ```
+
+* `input()`
+
+  * 사용자가 값을 입력하고 엔터를 누르면 문자형으로 저장됨
+
+  ```python
+  num = input()
+  print(num) # 입력한 값이 문자로 저장됨
+  ```
+
+  
